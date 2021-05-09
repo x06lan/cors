@@ -14,7 +14,9 @@ function doRequest(url) {
         let option = {
             "url": url,
             headers: {
-                "X-Requested-With": "XMLHttpRequest"
+                "X-Requested-With": "XMLHttpRequest",
+                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:24.0) Gecko/20100101 Firefox/24.0'
+                    // 'Content-Type': 'application/x-www-form-urlencoded'
             }
 
         }
