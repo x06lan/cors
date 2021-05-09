@@ -11,7 +11,14 @@ console.dir(ip.address() + ":" + port);
 
 function doRequest(url) {
     return new Promise(function(resolve, reject) {
-        request(url, function(error, res, body) {
+        let option = {
+            "url": url,
+            headers: {
+                "X-Requested-With": "XMLHttpRequest"
+            }
+
+        }
+        request(option, function(error, res, body) {
             if (!error && res.statusCode == 200) {
                 resolve(body);
             } else {
@@ -34,9 +41,8 @@ var server = http.createServer(async function(request, response) {
             return
 
         default:
-            console.log(path.slice(1, path.length))
             let acc_url = path.slice(1, path.length)
-
+            console.log(acc_url);
             if (acc_url != "favicon.ico") {
                 let res = await doRequest(acc_url)
                 response.write(res)
